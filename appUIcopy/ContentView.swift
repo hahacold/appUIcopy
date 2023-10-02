@@ -14,41 +14,44 @@ struct ContentView: View {
         
         ZStack{
             
-            Image("map")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea()
-            user(text: "steve")
-            user(text: "cook")
-            user(text: "peter")
-            Rectangle()
-                .frame(width:370,height: 350)
-                .cornerRadius(50.0)
-                .offset(x: 0, y: 225)
-            ZStack{
-                Image(systemName: "bubble.left")
-                    .foregroundColor(.white)
-            }
-            VStack{
-                Image("peter")
+            Group {
+                Image("map")
                     .resizable()
-                    .frame(width:85,height: 85)
-                    .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                Text("Peter")
-                    .foregroundColor(.white)
-                    .bold()
-                Text("apppeterpan@gmail.com")
-                    .foregroundColor(.white)
-                    .opacity(0.7)
-                Text(" ")
-                Text("At this place since: 10:20AM")
-                    .foregroundColor(.white)
-                    .bold()
-                Text(" ")
-                Text("Last update: Just now")
-                    .foregroundColor(.white)
-                    .bold()
-    
+                    .scaledToFill()
+                    .ignoresSafeArea()
+                user(text: "steve")
+                user(text: "cook")
+                user(text: "peter")
+                Rectangle()
+                    .frame(width:370,height: 370)
+                    .cornerRadius(50.0)
+                    .offset(x: 0, y: 220)
+                
+            }
+            
+            VStack{
+                Group{
+                    Image("peter")
+                        .resizable()
+                        .frame(width:85,height: 85)
+                        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                    Text("Peter")
+                        .foregroundColor(.white)
+                        .bold()
+                    Text("apppeterpan@gmail.com")
+                        .foregroundColor(.white)
+                        .opacity(0.7)
+                    Text(" ")
+                    Text("At this place since: 10:20AM")
+                        .foregroundColor(.white)
+                        .bold()
+                    Text(" ")
+                    Text("Last update: Just now")
+                        .foregroundColor(.white)
+                        .bold()
+                }
+                
+                
                 Text("Share your location for this person")
                     .bold()
                     .foregroundColor(.white)
@@ -77,42 +80,55 @@ struct ContentView: View {
                                     RoundedRectangle(cornerRadius: 20)
                                 )
                         )
+                        .offset(x: 0, y: -6)
                     
                 }
                 HStack(spacing:30){
-                    Image(systemName: "person.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(Color(red: 147/256, green: 112/256, blue: 219/256))
-                    Image(systemName: "person.2.fill")
-                        .resizable()
-                        .frame(width: 40, height: 30)
-                        .foregroundColor(Color(red: 147/256, green: 112/256, blue: 219/256))
-                    Image(systemName: "gearshape.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(Color(red: 147/256, green: 112/256, blue: 219/256))
-                    
-                    Image(systemName: "text.alignleft")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.white)
-                }
+                    Group{
+                        Image(systemName: "person.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(Color(red: 147/256, green: 112/256, blue: 219/256))
+                        Image(systemName: "person.2.fill")
+                            .resizable()
+                            .frame(width: 40, height: 30)
+                            .foregroundColor(Color(red: 147/256, green: 112/256, blue: 219/256))
+                    }
+                    Group{
+                        Image(systemName: "gearshape.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(Color(red: 147/256, green: 112/256, blue: 219/256))
                         
-                
-                
+                        Image(systemName: "text.alignleft")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.white)
+                    }
                     
                     
+                }
                 
-               
-
                 
-            }
-            .offset(x:0, y: 220)
+                
+                
+                
+                
+            }.offset(x:0 ,y:220)
+            ZStack{
+                Text("...")
+                    .foregroundColor(.white)
+                    .bold()
+                    .font(.system(size: 36))
+                    .offset(x: 0, y: -15)
+                Image(systemName: "bubble.left")
+                    .resizable()
+                    .foregroundColor(.white)
+                    .frame(width: 40, height: 40)
+                    
+            }.offset(x:100,y:100)
             
         }
-        
-        
     }
 }
 
@@ -131,6 +147,11 @@ struct user: View {
     let min = Int.random(in: 0...60)
     var body: some View {
         ZStack{
+            Circle()
+                .stroke()
+                .foregroundColor(.purple)
+                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 100)
+                .position(x: x, y:  y)
             Circle()
                 .foregroundColor(.purple)
                 .frame(width: 100, height: 100)
